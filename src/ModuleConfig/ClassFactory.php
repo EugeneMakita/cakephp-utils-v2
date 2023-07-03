@@ -40,6 +40,8 @@ class ClassFactory
         $classMapVersion = empty($options['classMapVersion']) ? Configure::read('ModuleConfig.classMapVersion') : (string)$options['classMapVersion'];
         $classMap = empty($options['classMap'][$classMapVersion]) ? Configure::read('ModuleConfig.classMap.' . $classMapVersion) : (array)$options['classMap'][$classMapVersion];
         if (empty($classMap[$configType][$classType])) {
+            dd($classMap, $configType);
+            print($classMap);
             throw new RuntimeException("No [$classType] found for configuration type [$configType] in class map version [$classMapVersion]");
         }
 
