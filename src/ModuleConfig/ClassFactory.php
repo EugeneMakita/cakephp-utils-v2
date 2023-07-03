@@ -37,15 +37,8 @@ class ClassFactory
         $configType = (string)$configType;
         $classType = (string)$classType;
 
-        try {
-            Configure::load('module_config', 'default');
-        } catch (\Exception $e) {
-            die("Unable to load configuration file module_config. [$e]");
-        }
-
-
         $classMapVersion = empty($options['classMapVersion']) ? Configure::read('ModuleConfig.classMapVersion') : (string)$options['classMapVersion'];
-        $classes = Configure::read('ModuleConfig.classMapVersion');
+        $classes = Configure::read('ModuleConfig');
         $classMap = empty($options['classMap'][$classMapVersion]) ? Configure::read('ModuleConfig.classMap.' . $classMapVersion) : (array)$options['classMap'][$classMapVersion];
         if (empty($classMap[$configType][$classType])) {
             throw new RuntimeException("No [$classType] found for configuration type [$configType] in class map version [$classes], []");
