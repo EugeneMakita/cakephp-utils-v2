@@ -41,7 +41,7 @@ class ClassFactory
         $classes = Configure::read('ModuleConfig');
         $classMap = empty($options['classMap'][$classMapVersion]) ? Configure::read('ModuleConfig.classMap.' . $classMapVersion) : (array)$options['classMap'][$classMapVersion];
         if (empty($classMap[$configType][$classType])) {
-            throw new RuntimeException("Configuration: " . print_r($class, true));
+            throw new RuntimeException("Configuration: " . print_r($classes, true));
         }
     }
 
