@@ -40,15 +40,9 @@ class ClassFactory
         $classMapVersion = empty($options['classMapVersion']) ? Configure::read('ModuleConfig.classMapVersion') : (string)$options['classMapVersion'];
         $classes = Configure::read('ModuleConfig');
         $classMap = empty($options['classMap'][$classMapVersion]) ? Configure::read('ModuleConfig.classMap.' . $classMapVersion) : (array)$options['classMap'][$classMapVersion];
-        var_dump(Configure::read('ModuleConfig'));
         if (empty($classMap[$configType][$classType])) {
-            throw new RuntimeException(Configure::read('ModuleConfig'));
+            throw new RuntimeException("Configuration: " . print_r($class, true));
         }
-
-        $className = $classMap[$configType][$classType];
-        $result = static::getInstance($className);
-
-        return $result;
     }
 
     /**
